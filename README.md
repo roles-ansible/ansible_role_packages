@@ -26,7 +26,6 @@ By default it will also add the [ETH Zürich Debian Packages Mirror](https://deb
 | ``l3d_pkgs__ethz_security`` | ``true`` | Inofficial Debian Security Mirror |
 | ``l3d_pkgs__ethz_updates`` | ``true`` | Updates Mirror |
 | ``l3d_pkgs__ethz__backports`` | ``true`` | Backports Mirror |
-
 | ``submodules_versioncheck`` | ``false`` | Enable simple versioncheck to prevent running old versions of this role |
 
  Contributing

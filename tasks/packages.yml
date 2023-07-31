@@ -15,40 +15,42 @@
     - ansible_os_family == 'RedHat' and ansible_distribution_version | float >= 8
 
 - name: Create Package installation list
-  blocks:
-    - name: Create Package installation list
-      ansible.builtin.set_fact:
-        l3d_pkgs__install: "{{  l3d_pkgs__base }}"
-
+  block:
     - name: Adding Advances Packages to installation list
       ansible.builtin.set_fact:
-        l3d_pkgs__install: "{{  l3d_pkgs__install | ansible.builtin.combine(l3d_pkgs__advanced) }}"
+        l3d_pkgs__advanced: []
       when:
-        l3d_pkgs__install_advanced | bool
+        not l3d_pkgs__install_advanced | bool
 
     - name: Adding Python Packages to installation list
       ansible.builtin.set_fact:
-        l3d_pkgs__install: "{{  l3d_pkgs__install | ansible.builtin.combine(l3d_pkgs__python) }}"
+        ll3d_pkgs__python: []
       when:
-        l3d_pkgs__install_python | bool
+        not l3d_pkgs__install_python | bool
 
     - name: Adding CLI Packages to installation list
       ansible.builtin.set_fact:
-        l3d_pkgs__install: "{{  l3d_pkgs__base | ansible.builtin.combine(l3d_pkgs__cli) }}"
+        l3d_pkgs__cli: []
       when:
-        l3d_pkgs__install_cli | bool
+        not l3d_pkgs__install_cli | bool
 
-    - name: Adding extra Packages to installation list
+    - name: Combine Lists
       ansible.builtin.set_fact:
-        l3d_pkgs__install: "{{  l3d_pkgs__base | ansible.builtin.combine(l3d_pkgs__install_extra_packages) }}"
+        l3d_pkgs__install: "{{ l3d_pkgs__base + l3d_pkgs__advanced + l3d_pkgs__python + l3d_pkgs__cli + l3d_pkgs__install_extra_packages }}"
 
     - name: Show l3d_pkgs__install on verbose run
       ansible.builtin.debug:
         msg: "{{ l3d_pkgs__install }}"
         verbosity: 1
   rescue:
-    ansible.builtin.fail:
-      msg: "Error creating list of packages for installation. Created list: {{ l3d_pkgs__install }}"
+    - name: Show l3d_pkgs__install on verbose run
+      ansible.builtin.debug:
+        msg: "{{ l3d_pkgs__install }}"
+        verbosity: 1
+
+    - name: Error Info
+      ansible.builtin.fail:
+        msg: "Error creating list of packages for installation."
 
 - name: Install selected Packages
   become: true

@@ -50,5 +50,5 @@ l3d_pkgs__cli:
   - bzip2
   - jq
 
-playbook_version_number: 5
+playbook_version_number: 6
 playbook_version_path: 'l3d.base.packages.version'

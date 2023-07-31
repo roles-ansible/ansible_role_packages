@@ -27,10 +27,10 @@ deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }} main
   {{- '\n\n' -}}
 
 {%- if l3d_pkgs__ethz_security | bool -%}
-# Inofficial Debian Security Mirror
-{% if ansible_distribution_major_version >= '11' -%}
+{{ '# Inofficial Debian Security Mirror\n' }}
+{%- if ansible_distribution_major_version >= '11' -%}
 deb https://security.debian.ethz.ch/ {{ ansible_distribution_release }}-security main
-{% else -%}
+{%- else -%}
 deb https://security.debian.ethz.ch/ {{ ansible_distribution_release }}/updates main
 {%- endif -%}
   {%- if l3d_pkgs__ethz_contrib | bool -%}
@@ -43,9 +43,9 @@ deb https://security.debian.ethz.ch/ {{ ansible_distribution_release }}/updates 
     {{- ' non-free-firmware' -}}
   {%- endif -%}
   {{- '\n' -}}
-{% if ansible_distribution_major_version >= '11' -%}
+{%- if ansible_distribution_major_version >= '11' -%}
 deb-src https://security.debian.ethz.ch/ {{ ansible_distribution_release }}-security main
-{% else -%}
+{%- else -%}
 deb-src https://security.debian.ethz.ch/ {{ ansible_distribution_release }}/updates main
 {%- endif -%}
   {%- if l3d_pkgs__ethz_contrib | bool -%}

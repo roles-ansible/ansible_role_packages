@@ -23,4 +23,4 @@
     name: "*"
     state: "{{ base__package_state }}"
   when:
-    - base__upgrade_packages_to_latest_version | bool
+    - l3d_pkgs__upgrade_all | bool

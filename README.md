@@ -13,11 +13,12 @@ By default it will also add the [ETH Zürich Debian Packages Mirror](https://deb
 
 | variable | default value | useage |
 | --- | --- | --- |
-| ``l3d_pkgs__package_state`` | ``present`` | Package State, set to ``latest`` to upgrade packages managed by this role |
 | ``l3d_pkgs__install_advanced`` | ``false`` | Install some advanced packages like tcpdump, mtr, fio and ethertools. See ``vars/main.yml`` for details |
 | ``l3d_pkgs__install_python`` | ``false`` | Install some Python packages like python3-pip. See ``vars/main.yml`` for details |
 | ``l3d_pkgs__install_cli`` | ``false`` | Install some CLI packages like htop, ranger and asciinema. See ``vars/main.yml`` for details |
 | ``l3d_pkgs__install_extra_packages`` | | List of additional packages to install |
+| ``l3d_pkgs__package_state`` | ``present`` | Package State, set to ``latest`` to upgrade packages managed by this role |
+| ``l3d_pkgs__upgrade_all`` | ``false`` | Can upgrade all packages if ``l3d_pkgs__package_state`` is to ``latest`` and the value is ``true`` |
 | ``l3d_pkgs__adding_ethz`` | ``true`` | Adding the swiss ETH package mirror |
 | ``l3d_pkgs__ethz_contrib`` | ``true`` | contrib packages contain DFSG-compliant software |
 | ``l3d_pkgs__ethz_non_free`` | ``true`` | non-free contains software that does not comply with the DFSG. |

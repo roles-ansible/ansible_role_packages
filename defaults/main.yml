@@ -11,6 +11,7 @@ l3d_pkgs__ethz__backports: true
 # Methods for updating Packages
 # set this to latest for updating packages managed by this role
 l3d_pkgs__package_state: 'present'
+l3d_pkgs__upgrade_all: false
 
 # Select packages to install
 l3d_pkgs__install_advanced: false

@@ -26,7 +26,7 @@ deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }} main
   {%- endif -%}
   {{- '\n\n' -}}
 
-{%- if base__pkg_security | bool -%}
+{%- if l3d_pkgs__ethz_security | bool -%}
 # Inofficial Debian Security Mirror
 {% if ansible_distribution_major_version >= '11' -%}
 deb https://security.debian.ethz.ch/ {{ ansible_distribution_release }}-security main
@@ -60,7 +60,7 @@ deb-src https://security.debian.ethz.ch/ {{ ansible_distribution_release }}/upda
   {{- '\n\n' -}}
 {%- endif -%}
 
-{%- if base__pkg_updates -%}
+{%- if l3d_pkgs__ethz_updates -%}
 # {{ ansible_distribution_release }}-updates, previously known as 'volatile'
 deb https://debian.ethz.ch/debian {{ ansible_distribution_release }}-updates main
   {%- if l3d_pkgs__ethz_contrib | bool -%}
@@ -86,7 +86,7 @@ deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }}-updates
   {{- '\n\n' -}}
 {%- endif -%}
 
-{%- if base__pkg_backports -%}
+{%- if l3d_pkgs__ethz__backports -%}
 # {{ ansible_distribution_release }}-backports
 deb https://debian.ethz.ch/debian {{ ansible_distribution_release }}-backports main
   {%- if l3d_pkgs__ethz_contrib | bool -%}

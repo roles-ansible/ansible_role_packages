@@ -4,7 +4,9 @@ l3d_pkgs__adding_ethz: true
 l3d_pkgs__ethz_contrib: true
 l3d_pkgs__ethz_non_free: true
 l3d_pkgs__ethz_non_free_firmware: true
-
+l3d_pkgs__ethz_security: true
+l3d_pkgs__ethz_updates: true
+l3d_pkgs__ethz__backports: true
 
 # Methods for updating Packages
 # set this to latest for updating packages managed by this role

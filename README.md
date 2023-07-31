@@ -1,58 +1,26 @@
+[![Ansible Galaxy](https://ansible.l3d.space/svg/l3d.packages.svg)](https://galaxy.ansible.com/l3d/packages)
+[![BSD-3 Clause](https://ansible.l3d.space/svg/l3d.packages_license.svg)](LICENSE)
+[![Maintainance](https://ansible.l3d.space/svg/l3d.packages_maintainance.svg)](https://ansible.l3d.space/#l3d.packages)
 
 Ansible Role to install packages
 ---------------------
 
-```
-WARNING: REWRITE
-```
+The purpose of this ansible role ist, to install some usefull packages and to give you the option to install some additional packages.
+By default it will also add the [ETH Zürich Debian Packages Mirror](https://debian.ethz.ch/debian/).
 
-A base ansible role that should run on common Linux systems.
+ Variables
+-----------
 
-This role adds more package sources to Debian. And installs some useful tools. This role adds more package sources to Debian. And installs some useful tools. The complete list of tools to install can be found in the [vars/main.yml](https://github.com/roles-ansible/ansible_role_base/blob/master/vars/main.yml).
+| variable | default value | useage |
+| --- | --- | --- |
+| ``l3d_pkgs__adding_ethz`` | ``true`` | Adding the swiss ETH package mirror |
+| ``l3d_pkgs__package_state`` | ``present`` | Package State, set to ``latest`` to upgrade packages managed by this role |
+| ``l3d_pkgs__install_advanced`` | ``false`` | Install some advanced packages like tcpdump, mtr, fio and ethertools. See ``vars/main.yml`` for details |
+| ``l3d_pkgs__install_python`` | ``false`` | Install some Python packages like python3-pip. See ``vars/main.yml`` for details |
+| ``l3d_pkgs__install_cli`` | ``false`` | Install some CLI packages like htop, ranger and asciinema. See ``vars/main.yml`` for details |
+| ``l3d_pkgs__install_extra_packages`` | | List of additional packages to install |
+| ``submodules_versioncheck`` | ``false`` | Enable simple versioncheck to prevent running old versions of this role |
 
-Optionally you can also set vim as the default editor and update all packages to ``latest``.
-
-
-### variables:
-
-For a complete overview of all variables have a deeper look into the ``vars`` nd the ``defaults`` Folder!.
-
-```yml
----
-# install these additional packages
-base__extra_packages: []
-# - foo
-# - bar
-
-# should we add additional package source?
-base__add_ethz: true
-
-# add nonfree/firmware packages?
-base__pkg_non_free_firmware: true
-base__pkg_contrib: true
-
-# add security repo
-base__pkg_security: true
-
-# add Debian Volatile
-base__pkg_updates: true
-
-# optionaly print some OS vars
-base__print_os_vars: false
-
-# choose latest or present for package state
-# set this to latest for updating all packages!
-base__package_state: 'present'
-
-# should we update all packages?
-base__upgrade_packages_to_latest_version: false
-
-# install keychain (ssh agent)
-base__install_keychain: true
-
-# install vim (comand line editor)
-base__install_vim: true
-
-# perform a simple versions check (true is recomended)
-submodules_versioncheck: false
-```
+ Contributing
+-------------
+Please feel free to open a issue or create a pull request.

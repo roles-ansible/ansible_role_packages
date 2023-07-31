@@ -1,5 +1,5 @@
 ---
-- name: Update apt repo-cache for debian/ubuntu
+- name: Update apt repo-cache on debian/ubuntu hosts
   become: true
   ansible.builtin.apt:
     update_cache: true
@@ -7,72 +7,52 @@
   when:
     - ansible_pkg_mgr == "apt"
 
-- name: Update dnf repo-cache RHEL/Fedora
+- name: Update dnf repo-cache on RHEL/Fedora hosts
   become: true
   ansible.builtin.dnf:
     update_cache: true
   when:
     - ansible_os_family == 'RedHat' and ansible_distribution_version | float >= 8
 
-- name: Install base packages for all operating systems
+- name: Create Package installation list
+  blocks:
+    - name: Create Package installation list
+      ansible.builtin.set_fact:
+        l3d_pkgs__install: "{{  l3d_pkgs__base }}"
+
+    - name: Adding Advances Packages to installation list
+      ansible.builtin.set_fact:
+        l3d_pkgs__install: "{{  l3d_pkgs__install | ansible.builtin.combine(l3d_pkgs__advanced) }}"
+      when:
+        l3d_pkgs__install_advanced | bool
+
+    - name: Adding Python Packages to installation list
+      ansible.builtin.set_fact:
+        l3d_pkgs__install: "{{  l3d_pkgs__install | ansible.builtin.combine(l3d_pkgs__python) }}"
+      when:
+        l3d_pkgs__install_python | bool
+
+    - name: Adding CLI Packages to installation list
+      ansible.builtin.set_fact:
+        l3d_pkgs__install: "{{  l3d_pkgs__base | ansible.builtin.combine(l3d_pkgs__cli) }}"
+      when:
+        l3d_pkgs__install_cli | bool
+
+    - name: Adding extra Packages to installation list
+      ansible.builtin.set_fact:
+        l3d_pkgs__install: "{{  l3d_pkgs__base | ansible.builtin.combine(l3d_pkgs__install_extra_packages) }}"
+
+    - name: Show l3d_pkgs__install on verbose run
+      ansible.builtin.debug:
+        msg: "{{ l3d_pkgs__install }}"
+        verbosity: 1
+  rescue:
+    ansible.builtin.fail:
+      msg: "Error creating list of packages for installation. Created list: {{ l3d_pkgs__install }}"
+
+- name: Install selected Packages
   become: true
   ansible.builtin.package:
     name: "{{ item }}"
-    state: "{{ base__package_state }}"
-  with_items: "{{ base__packages }}"
-
-- name: Install python3 for all non-legacy systems
-  become: true
-  ansible.builtin.package:
-    name: "{{ base__python3_packages }}"
-    state: "{{ base__package_state }}"
-  when: |
-    ansible_distribution == 'Ubuntu' and ansible_distribution_version | float >= 16.0 or
-    ansible_os_family == 'RedHat' and ansible_distribution_version | float >= 7 or
-    ansible_distribution == 'Debian' and ansible_distribution_version | float >= 7
-
-# - name: Install python for systems where python3 packages are renamed to python
-#   become: true
-#   ansible.builtin.package:
-#     name: "{{ base__python_packages }}"
-#     state: "{{ base__package_state }}"
-#   when: ansible_os_family == 'Archlinux'
-# 
-# - name: Install packages for all non-legacy systems
-#   become: true
-#   ansible.builtin.package:
-#     name: "{{ base__modern_packages }}"
-#     state: "{{ base__package_state }}"
-#   when: |
-#     ansible_distribution == 'Ubuntu' and ansible_distribution_version | float >= 16.0 or
-#     ansible_os_family == 'RedHat' and ansible_distribution_version | float >= 7 or
-#     ansible_distribution == 'Debian' and ansible_distribution_version | float >= 8 or
-#     ansible_os_family == 'Archlinux'
-# 
-# - name: Install packages for all non-legacy Debian/Ububntu systems
-#   become: true
-#   ansible.builtin.package:
-#     name: "{{ base__debian_packages }}"
-#     state: "{{ base__package_state }}"
-#   when: |
-#     ansible_distribution == 'Ubuntu' and ansible_distribution_version | float >= 16.0 or
-#     ansible_distribution == 'Debian' and ansible_distribution_version | float >= 8
-# 
-# - name: Install packages for all reasonable non-legacy systems
-#   become: true
-#   ansible.builtin.package:
-#     name: "{{ base__linux_packages }}"
-#     state: "{{ base__package_state }}"
-#   when: |
-#     ansible_distribution == 'Ubuntu' and ansible_distribution_version | float >= 18.0 or
-#     ansible_distribution == 'Fedora' and ansible_distribution_version | float >= 32 or
-#     ansible_distribution == 'Debian' and ansible_distribution_version | float >= 9 or
-#     ansible_os_family == 'Archlinux'
-# 
-# - name: Install mailx on debian
-#   become: true
-#   ansible.builtin.package:
-#     name:
-#       - bsd-mailx
-#     state: "{{ base__package_state }}"
-#   when: ansible_distribution == 'Debian' and ansible_distribution_version | float >= 7 and base__install_mailx | bool
+    state: "{{ l3d_pkgs__package_state }}"
+  with_items: "{{ l3d_pkgs__install }}"

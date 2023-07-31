@@ -1,6 +1,6 @@
 ---
 # must-have packages for all systems
-base__packages:
+l3d_pkgs__base:
   - rsync
   - tmux
   - sudo
@@ -16,14 +16,9 @@ base__packages:
   - lsof
   - pwgen
 
-# packages for all non-legacy x86 systems
-base__modern_packages:
+l3d_pkgs__advanced:
   - tcpdump
   - sysstat
-#  - smartmontools
-
-# debian/ubuntu packages
-base__debian_packages:
   - debian-goodies
   - molly-guard
   - mtr-tiny
@@ -36,18 +31,12 @@ base__debian_packages:
   - python3-apt
   - ethstatus
 
-# modern python packages where python stands for python3
-base__python_packages:
-  - python-pip
-  - python
-
-# modern python packages
-base__python3_packages:
+l3d_pkgs__python:
   - python3-pip
+  - python3-dev
   - python3
 
-# packages for reasonable linux servers (not RHEL/Centos)
-base__linux_packages:
+l3d_pkgs__cli:
   - links
   - ranger
   - htop
@@ -58,9 +47,8 @@ base__linux_packages:
   - ncdu
   - atop
   - asciinema
-  - youtube-dl
   - bzip2
   - jq
 
-playbook_version_number: 9020
-playbook_version_path: 'base-packages_roles-ansible_github.version'
+playbook_version_number: 5
+playbook_version_path: 'l3d.base.packages.version'

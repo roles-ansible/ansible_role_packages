@@ -1,8 +1,8 @@
 ---
 galaxy_info:
   author: l3d
-  description: Ansible role to install some base packages and make some base configuration on all common linux systems
-  role_name: base
+  description: Ansible role to install some base packages on your linux systems
+  role_name: packages
   license: MIT
   min_ansible_version: "2.12"
   platforms:
@@ -19,8 +19,10 @@ galaxy_info:
   galaxy_tags:
     - base
     - packages
-    - default
     - apt
+    - dnf
+    - cli
+    - packman
     - sources
     - linux
 dependencies: []

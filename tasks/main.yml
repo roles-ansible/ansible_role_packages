@@ -9,12 +9,12 @@
 - name: Adding additional apt sources (optional)
   ansible.builtin.include_tasks: sources_ethz.yml
   when:
-    - base__add_ethz | bool
+    - l3d_pkgs__adding_ethz | bool
     - ansible_architecture == 'x86_64'
     - ansible_distribution == 'Debian' and ansible_distribution_version | float >= 8
     - ansible_pkg_mgr == "apt"
 
-- name: Install some recomended packages
+- name: Install packages based on selection
   ansible.builtin.include_tasks: packages.yml
 
 - name: Upgrade all packages to latest
@@ -24,17 +24,3 @@
     state: "{{ base__package_state }}"
   when:
     - base__upgrade_packages_to_latest_version | bool
-
-# - name: Optional configure editor
-#   ansible.builtin.include_tasks: editor.yml
-#   when: base__install_vim | bool
-# 
-# - name: Optional install keychain
-#   ansible.builtin.include_tasks: keychain.yml
-#   when: base__install_keychain | bool
-# 
-# - name: Install optional packages
-#   become: true
-#   ansible.builtin.package:
-#     name: "{{ base__extra_packages }}"
-#     state: present

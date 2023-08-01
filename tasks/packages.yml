@@ -57,4 +57,4 @@
   ansible.builtin.package:
     name: "{{ item }}"
     state: "{{ l3d_pkgs__package_state }}"
-  with_items: "{{ l3d_pkgs__install }}"
+  loop: "{{ l3d_pkgs__install | flatten(1) }}"

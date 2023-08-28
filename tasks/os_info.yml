@@ -12,3 +12,22 @@
       ansible_hostname = '{{ ansible_hostname }}'
       ansible_fqdn = '{{ ansible_fqdn }}'
     verbosity: 1
+
+- name: Print used variables
+  ansible.builtin.debug:
+    msg: |
+      l3d_pkgs__adding_ethz: '{{ l3d_pkgs__adding_ethz }}'
+      l3d_pkgs__ethz_contrib: '{{ l3d_pkgs__ethz_contrib }}'
+      l3d_pkgs__ethz_non_free: '{{ l3d_pkgs__ethz_non_free }}'
+      l3d_pkgs__ethz_non_free_firmware: '{{ l3d_pkgs__ethz_non_free_firmware }}'
+      l3d_pkgs__ethz_security: '{{ l3d_pkgs__ethz_security }}'
+      l3d_pkgs__ethz_updates: '{{ l3d_pkgs__ethz_updates }}'
+      l3d_pkgs__ethz__backports: '{{ l3d_pkgs__ethz__backports }}'
+      l3d_pkgs__package_state: '{{ l3d_pkgs__package_state }}'
+      l3d_pkgs__upgrade_all: '{{ l3d_pkgs__upgrade_all }}'
+      l3d_pkgs__install_advanced: '{{ l3d_pkgs__install_advanced }}'
+      l3d_pkgs__install_python: '{{ l3d_pkgs__install_python }}'
+      l3d_pkgs__install_cli: '{{ l3d_pkgs__install_cli }}'
+      l3d_pkgs__install_extra_packages: '{{ l3d_pkgs__install_extra_packages }}'
+      submodules_versioncheck: '{{ submodules_versioncheck }}'
+    verbosity: 1

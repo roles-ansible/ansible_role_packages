@@ -1,4 +1,4 @@
-[![Ansible Galaxy](https://ansible.l3d.space/svg/l3d.packages.svg)](https://galaxy.ansible.com/l3d/packages)
+[![Ansible Galaxy](https://ansible.l3d.space/svg/l3d.packages.svg)]([https://galaxy.ansible.com/l3d/packages](https://galaxy.ansible.com/ui/standalone/roles/l3d/packages/)
 [![BSD-3 Clause](https://ansible.l3d.space/svg/l3d.packages_license.svg)](LICENSE)
 [![Maintainance](https://ansible.l3d.space/svg/l3d.packages_maintainance.svg)](https://ansible.l3d.space/#l3d.packages)
 

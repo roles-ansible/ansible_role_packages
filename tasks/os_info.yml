@@ -1,5 +1,5 @@
 ---
-- name: Print OS Infos
+- name: Print OS Infos  # noqa: H500
   ansible.builtin.debug:
     msg: |
       ansible_os_family = '{{ ansible_os_family }}'
@@ -13,7 +13,7 @@
       ansible_fqdn = '{{ ansible_fqdn }}'
     verbosity: 1
 
-- name: Print used variables
+- name: Print used variables  # noqa: H500
   ansible.builtin.debug:
     msg: |
       l3d_pkgs__adding_ethz: '{{ l3d_pkgs__adding_ethz }}'

@@ -38,12 +38,12 @@
       ansible.builtin.set_fact:
         l3d_pkgs__install: "{{ l3d_pkgs__base + l3d_pkgs__advanced + l3d_pkgs__python + l3d_pkgs__cli + l3d_pkgs__install_extra_packages }}"
 
-    - name: Show l3d_pkgs__install on verbose run
+    - name: Show l3d_pkgs__install on verbose run  # noqa: H500
       ansible.builtin.debug:
         msg: "{{ l3d_pkgs__install }}"
         verbosity: 1
   rescue:
-    - name: Show l3d_pkgs__install on verbose run
+    - name: Show l3d_pkgs__install on verbose run  # noqa: H500
       ansible.builtin.debug:
         msg: "{{ l3d_pkgs__install }}"
         verbosity: 1

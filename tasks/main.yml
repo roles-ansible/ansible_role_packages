@@ -1,13 +1,16 @@
 ---
 - name: Show Information about target OS (on verbose)
-  ansible.builtin.include_tasks: os_info.yml
+  ansible.builtin.include_tasks:
+    file: os_info.yml
 
 - name: Run simple versionscheck (optional)
-  ansible.builtin.include_tasks: versioncheck.yml
+  ansible.builtin.include_tasks:
+    file: versioncheck.yml
   when: submodules_versioncheck | bool
 
 - name: Adding additional apt sources (optional)
-  ansible.builtin.include_tasks: sources_ethz.yml
+  ansible.builtin.include_tasks:
+    file: sources_ethz.yml
   when:
     - l3d_pkgs__adding_ethz | bool
     - ansible_architecture == 'x86_64'
@@ -15,7 +18,8 @@
     - ansible_pkg_mgr == "apt"
 
 - name: Install packages based on selection
-  ansible.builtin.include_tasks: packages.yml
+  ansible.builtin.include_tasks:
+    file: packages.yml
 
 - name: Upgrade all packages to latest
   become: true

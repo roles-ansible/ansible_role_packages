@@ -16,6 +16,36 @@
       - apt-transport-https
     state: present
 
+- name: Set ETHZ debian packages to main
+  ansible.builtin.set_fact:
+    l3d_pkgs__debian_packages_version: 'main contrib'
+  when:
+    - not l3d_pkgs__ethz_contrib | bool
+    - not l3d_pkgs__ethz_non_free | bool
+
+- name: Set ETHZ debian packages to main contrib
+  ansible.builtin.set_fact:
+    l3d_pkgs__debian_packages_version: 'main contrib'
+  when:
+    - l3d_pkgs__ethz_contrib | bool
+    - not l3d_pkgs__ethz_non_free | bool
+
+- name: Set ETHZ debian packages to main contrib non-free
+  ansible.builtin.set_fact:
+    l3d_pkgs__debian_packages_version: 'main contrib non-free'
+  when:
+    - l3d_pkgs__ethz_contrib | bool
+    - l3d_pkgs__ethz_non_free | bool
+    - not ansible_distribution_major_version >= '12'
+
+- name: Set ETHZ debian packages to main contrib non-free non-free-firmware
+  ansible.builtin.set_fact:
+    l3d_pkgs__debian_packages_version: 'main contrib non-free non-free-firmware'
+  when:
+    - l3d_pkgs__ethz_contrib | bool
+    - l3d_pkgs__ethz_non_free | bool
+    - ansible_distribution_major_version >= '12'
+
 - name: Add ETH zurich apt for Debian
   become: true
   ansible.builtin.template:

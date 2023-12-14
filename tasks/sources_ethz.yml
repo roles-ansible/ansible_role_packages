@@ -51,7 +51,7 @@
   ansible.builtin.template:
     src: "templates/apt.sources.list.j2"
     dest: '/etc/apt/sources.list.d/debian_ethz_ch_debian.list'
-    mode: 0644
+    mode: '0644'
     group: root
     owner: root
   notify: Run apt update

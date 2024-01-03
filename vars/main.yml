@@ -49,6 +49,7 @@ l3d_pkgs__cli:
   - asciinema
   - bzip2
   - jq
+  - zstd
 
-playbook_version_number: 7
+playbook_version_number: 8
 playbook_version_path: 'l3d.base.packages.version'

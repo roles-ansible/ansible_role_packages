@@ -1,6 +1,6 @@
 ---
 # must-have packages for all systems
-l3d_pkgs__base:
+package__base:
   - rsync
   - tmux
   - sudo
@@ -16,7 +16,7 @@ l3d_pkgs__base:
   - lsof
   - pwgen
 
-l3d_pkgs__advanced:
+package__advanced:
   - tcpdump
   - sysstat
   - debian-goodies
@@ -31,12 +31,12 @@ l3d_pkgs__advanced:
   - python3-apt
   - ethstatus
 
-l3d_pkgs__python:
+package__python:
   - python3-pip
   - python3-dev
   - python3
 
-l3d_pkgs__cli:
+package__cli:
   - links
   - ranger
   - htop

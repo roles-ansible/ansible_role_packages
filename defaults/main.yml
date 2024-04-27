@@ -1,23 +1,23 @@
 ---
 # Adding additional Package Server hosted by ETH Zürich
-l3d_pkgs__adding_ethz: true
-l3d_pkgs__ethz_contrib: true
-l3d_pkgs__ethz_non_free: true
-l3d_pkgs__ethz_non_free_firmware: true
-l3d_pkgs__ethz_security: true
-l3d_pkgs__ethz_updates: true
-l3d_pkgs__ethz__backports: true
+packages__adding_ethz: true
+packages__ethz_contrib: true
+packages__ethz_non_free: true
+packages__ethz_non_free_firmware: true
+packages__ethz_security: true
+packages__ethz_updates: true
+packages__ethz__backports: true
 
 # Methods for updating Packages
 # set this to latest for updating packages managed by this role
-l3d_pkgs__package_state: 'present'
-l3d_pkgs__upgrade_all: false
+packages__package_state: 'present'
+packages__upgrade_all: false
 
 # Select packages to install
-l3d_pkgs__install_advanced: false
-l3d_pkgs__install_python: false
-l3d_pkgs__install_cli: false
-l3d_pkgs__install_extra_packages: []
+packages__install_advanced: false
+packages__install_python: false
+packages__install_cli: false
+packages__install_extra_packages: []
 
 # Optional perform simple Versionscheck
-submodules_versioncheck: false
+packages__submodules_versioncheck: false

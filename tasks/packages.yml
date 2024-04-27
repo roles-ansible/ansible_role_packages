@@ -18,34 +18,34 @@
   block:
     - name: Adding Advances Packages to installation list
       ansible.builtin.set_fact:
-        l3d_pkgs__advanced: []
+        packages__advanced: []
       when:
-        not l3d_pkgs__install_advanced | bool
+        not packages__install_advanced | bool
 
     - name: Adding Python Packages to installation list
       ansible.builtin.set_fact:
-        ll3d_pkgs__python: []
+        lpackages__python: []
       when:
-        not l3d_pkgs__install_python | bool
+        not packages__install_python | bool
 
     - name: Adding CLI Packages to installation list
       ansible.builtin.set_fact:
-        l3d_pkgs__cli: []
+        packages__cli: []
       when:
-        not l3d_pkgs__install_cli | bool
+        not packages__install_cli | bool
 
     - name: Combine Lists
       ansible.builtin.set_fact:
-        l3d_pkgs__install: "{{ l3d_pkgs__base + l3d_pkgs__advanced + l3d_pkgs__python + l3d_pkgs__cli + l3d_pkgs__install_extra_packages }}"
+        packages__install: "{{ packages__base + packages__advanced + packages__python + packages__cli + packages__install_extra_packages }}"
 
-    - name: Show l3d_pkgs__install on verbose run  # noqa: H500
+    - name: Show packages__install on verbose run  # noqa: H500
       ansible.builtin.debug:
-        msg: "{{ l3d_pkgs__install }}"
+        msg: "{{ packages__install }}"
         verbosity: 1
   rescue:
-    - name: Show l3d_pkgs__install on verbose run  # noqa: H500
+    - name: Show packages__install on verbose run  # noqa: H500
       ansible.builtin.debug:
-        msg: "{{ l3d_pkgs__install }}"
+        msg: "{{ packages__install }}"
         verbosity: 1
 
     - name: Error Info
@@ -56,5 +56,5 @@
   become: true
   ansible.builtin.package:
     name: "{{ item }}"
-    state: "{{ l3d_pkgs__package_state }}"
-  loop: "{{ l3d_pkgs__install | flatten(1) }}"
+    state: "{{ packages__package_state }}"
+  loop: "{{ packages__install | flatten(1) }}"

@@ -13,20 +13,20 @@ By default it will also add the [ETH Zürich Debian Packages Mirror](https://deb
 
 | variable | default value | useage |
 | --- | --- | --- |
-| ``l3d_pkgs__install_advanced`` | ``false`` | Install some advanced packages like tcpdump, mtr, fio and ethertools. See ``vars/main.yml`` for details |
-| ``l3d_pkgs__install_python`` | ``false`` | Install some Python packages like python3-pip. See ``vars/main.yml`` for details |
-| ``l3d_pkgs__install_cli`` | ``false`` | Install some CLI packages like htop, ranger and asciinema. See ``vars/main.yml`` for details |
-| ``l3d_pkgs__install_extra_packages`` | | List of additional packages to install |
-| ``l3d_pkgs__package_state`` | ``present`` | Package State, set to ``latest`` to upgrade packages managed by this role |
-| ``l3d_pkgs__upgrade_all`` | ``false`` | Can upgrade all packages if ``l3d_pkgs__package_state`` is to ``latest`` and the value is ``true`` |
-| ``l3d_pkgs__adding_ethz`` | ``true`` | Adding the swiss ETH package mirror |
-| ``l3d_pkgs__ethz_contrib`` | ``true`` | contrib packages contain DFSG-compliant software |
-| ``l3d_pkgs__ethz_non_free`` | ``true`` | non-free contains software that does not comply with the DFSG. |
-| ``l3d_pkgs__ethz_non_free_firmware`` | ``true`` | contains non-free-firmware packages |
-| ``l3d_pkgs__ethz_security`` | ``true`` | Inofficial Debian Security Mirror |
-| ``l3d_pkgs__ethz_updates`` | ``true`` | Updates Mirror |
-| ``l3d_pkgs__ethz__backports`` | ``true`` | Backports Mirror |
-| ``submodules_versioncheck`` | ``false`` | Enable simple versioncheck to prevent running old versions of this role |
+| ``packages__install_advanced`` | ``false`` | Install some advanced packages like tcpdump, mtr, fio and ethertools. See ``vars/main.yml`` for details |
+| ``packages__install_python`` | ``false`` | Install some Python packages like python3-pip. See ``vars/main.yml`` for details |
+| ``packages__install_cli`` | ``false`` | Install some CLI packages like htop, ranger and asciinema. See ``vars/main.yml`` for details |
+| ``packages__install_extra_packages`` | | List of additional packages to install |
+| ``packages__package_state`` | ``present`` | Package State, set to ``latest`` to upgrade packages managed by this role |
+| ``packages__upgrade_all`` | ``false`` | Can upgrade all packages if ``packages__packages_state`` is to ``latest`` and the value is ``true`` |
+| ``packages__adding_ethz`` | ``true`` | Adding the swiss ETH package mirror |
+| ``packages__ethz_contrib`` | ``true`` | contrib packages contain DFSG-compliant software |
+| ``packages__ethz_non_free`` | ``true`` | non-free contains software that does not comply with the DFSG. |
+| ``packages__ethz_non_free_firmware`` | ``true`` | contains non-free-firmware packages |
+| ``packages__ethz_security`` | ``true`` | Inofficial Debian Security Mirror |
+| ``packages__ethz_updates`` | ``true`` | Updates Mirror |
+| ``packages__ethz__backports`` | ``true`` | Backports Mirror |
+| ``packages__submodules_versioncheck`` | ``false`` | Enable simple versioncheck to prevent running old versions of this role |
 
  Contributing
 -------------

@@ -20,4 +20,4 @@ packages__install_cli: false
 packages__install_extra_packages: []
 
 # Optional perform simple Versionscheck
-submodules_versioncheck: false
+packages__submodules_versioncheck: false

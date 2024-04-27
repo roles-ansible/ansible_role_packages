@@ -1,6 +1,6 @@
 ---
 # must-have packages for all systems
-package__base:
+packages__base:
   - rsync
   - tmux
   - sudo
@@ -16,7 +16,7 @@ package__base:
   - lsof
   - pwgen
 
-package__advanced:
+packages__advanced:
   - tcpdump
   - sysstat
   - debian-goodies
@@ -31,12 +31,12 @@ package__advanced:
   - python3-apt
   - ethstatus
 
-package__python:
+packages__python:
   - python3-pip
   - python3-dev
   - python3
 
-package__cli:
+packages__cli:
   - links
   - ranger
   - htop
@@ -51,5 +51,5 @@ package__cli:
   - jq
   - zstd
 
-playbook_version_number: 8
-playbook_version_path: 'l3d.base.packages.version'
+packages__playbook_version_number: 9
+packages__playbook_version_path: 'l3d.base.packages.version'

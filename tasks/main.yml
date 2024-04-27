@@ -6,7 +6,7 @@
 - name: Run simple versionscheck (optional)
   ansible.builtin.include_tasks:
     file: 'versioncheck.yml'
-  when: submodules_versioncheck | bool
+  when: packages__submodules_versioncheck | bool
 
 - name: Adding additional apt sources (optional)
   ansible.builtin.include_tasks:

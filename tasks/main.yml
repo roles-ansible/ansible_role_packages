@@ -25,6 +25,6 @@
   become: true
   ansible.builtin.package:
     name: "*"
-    state: "{{ base__package_state }}"
+    state: "{{ packages__package_state }}"
   when:
     - packages__upgrade_all | bool

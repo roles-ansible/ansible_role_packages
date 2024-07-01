@@ -51,5 +51,5 @@ packages__cli:
   - jq
   - zstd
 
-packages__playbook_version_number: 9
+packages__playbook_version_number: 10
 packages__playbook_version_path: 'l3d.base.packages.version'

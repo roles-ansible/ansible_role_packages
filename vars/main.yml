@@ -50,6 +50,7 @@ packages__cli:
   - bzip2
   - jq
   - zstd
+  - tree
 
-packages__playbook_version_number: 10
+packages__playbook_version_number: 11
 packages__playbook_version_path: 'l3d.base.packages.version'

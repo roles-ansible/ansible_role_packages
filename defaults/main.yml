@@ -17,6 +17,7 @@ packages__upgrade_all: false
 packages__install_advanced: false
 packages__install_python: false
 packages__install_cli: false
+packages__install_desktop: false
 packages__install_extra_packages: []
 
 # Optional perform simple Versionscheck

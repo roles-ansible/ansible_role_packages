@@ -34,9 +34,15 @@
       when:
         not packages__install_cli | bool
 
+    - name: Adding Desktop Packages to installation list
+      ansible.builtin.set_fact:
+        packages__desktop: []
+      when:
+        not packages__install_desktop | bool
+
     - name: Combine Lists
       ansible.builtin.set_fact:
-        packages__install: "{{ packages__base + packages__advanced + packages__python + packages__cli + packages__install_extra_packages }}"
+        packages__install: "{{ packages__base + packages__advanced + packages__python + packages__cli + packages__desktop + packages__install_extra_packages }}"
 
     - name: Show packages__install on verbose run  # noqa: H500
       ansible.builtin.debug:

@@ -30,6 +30,7 @@ packages__advanced:
   - python3-setuptools
   - python3-apt
   - ethstatus
+  - resolvconf
 
 packages__python:
   - python3-pip
@@ -51,6 +52,23 @@ packages__cli:
   - jq
   - zstd
   - tree
+  - keychain
+  - ssh-askpass
+  - whois
+  - uuid-runtime
+  - moreutils
+  - ddate
 
-packages__playbook_version_number: 11
+packages__desktop:
+  - thunderbird
+  - chromium
+  - nextcloud-desktop
+  - meld
+  - mpv
+  - radeontop
+  - nm-tray
+  - fwupdate
+  - blueman
+
+packages__playbook_version_number: 12
 packages__playbook_version_path: 'l3d.base.packages.version'

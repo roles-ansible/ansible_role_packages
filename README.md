@@ -16,6 +16,7 @@ By default it will also add the [ETH Zürich Debian Packages Mirror](https://deb
 | ``packages__install_advanced`` | ``false`` | Install some advanced packages like tcpdump, mtr, fio and ethertools. See ``vars/main.yml`` for details |
 | ``packages__install_python`` | ``false`` | Install some Python packages like python3-pip. See ``vars/main.yml`` for details |
 | ``packages__install_cli`` | ``false`` | Install some CLI packages like htop, ranger and asciinema. See ``vars/main.yml`` for details |
+| ``packages__install_desktop`` | ``false`` | Install some Desktop packages like thunderbird. See ``vars/main.yml`` for details |
 | ``packages__install_extra_packages`` | | List of additional packages to install |
 | ``packages__package_state`` | ``present`` | Package State, set to ``latest`` to upgrade packages managed by this role |
 | ``packages__upgrade_all`` | ``false`` | Can upgrade all packages if ``packages__packages_state`` is to ``latest`` and the value is ``true`` |

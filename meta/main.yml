@@ -1,10 +1,11 @@
 ---
 galaxy_info:
-  author: l3d
+  author: do1jlr
+  namespace: l3d
   description: Ansible role to install some base packages on your linux systems
   role_name: packages
   license: MIT
-  min_ansible_version: "2.12"
+  min_ansible_version: "2.14"
   platforms:
     - name: ArchLinux
       versions: ['all']

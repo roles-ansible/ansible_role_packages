@@ -15,22 +15,31 @@ packages__base:
   - gdisk
   - lsof
   - pwgen
+  - less
 
 packages__advanced:
   - tcpdump
   - sysstat
-  - debian-goodies
-  - molly-guard
-  - mtr-tiny
-  - knot-dnsutils
   - fio
-  - apt-dater-host
+  - resolvconf
+
+packages__advanced_debian:
+  - debian-goodies
+  - mtr-tiny
+  - molly-guard
   - apt-transport-https
+  - knot-dnsutils
+  - apt-dater-host
   - aptitude
   - python3-setuptools
   - python3-apt
   - ethstatus
-  - resolvconf
+
+packages__advanced_archlinux:
+  - networkmanager-openvpn
+  - network-manager-applet
+  - networkmanager
+  - bind
 
 packages__python:
   - python3-pip
@@ -53,22 +62,26 @@ packages__cli:
   - zstd
   - tree
   - keychain
-  - ssh-askpass
   - whois
-  - uuid-runtime
   - moreutils
+
+packages__cli_debian:
+  - ssh-askpass
+  - uuid-runtime
   - ddate
 
 packages__desktop:
   - thunderbird
   - chromium
-  - nextcloud-desktop
   - meld
   - mpv
   - radeontop
-  - nm-tray
-  - fwupdate
   - blueman
 
-packages__playbook_version_number: 12
+packages__desktop_debian:
+  - nm-tray
+  - nextcloud-desktop
+  - fwupdate
+
+packages__playbook_version_number: 13
 packages__playbook_version_path: 'l3d.base.packages.version'

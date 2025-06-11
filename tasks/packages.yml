@@ -81,7 +81,7 @@
 
     - name: Combine Lists
       ansible.builtin.set_fact:
-        packages__install: "{{ packages__base + packages__advanced + packages__advanced_archlinux + packages__advanced_debian + packages__python + packages__cli + packages_cli_debian + packages__desktop + packages__desktop_debian + packages__install_extra_packages }}"
+        packages__install: "{{ packages__base + packages__advanced + packages__advanced_archlinux + packages__advanced_debian + packages__python + packages__cli + packages_cli_debian + packages__desktop + packages__desktop_debian + packages__install_extra_packages }}"  # yamllint disable-line rule:line-length
 
     - name: Show packages__install on verbose run  # noqa: H500
       ansible.builtin.debug:

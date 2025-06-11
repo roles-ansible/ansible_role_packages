@@ -22,9 +22,36 @@
       when:
         not packages__install_advanced | bool
 
+    - name: Adding Debian Advances Packages to installation list
+      ansible.builtin.set_fact:
+        packages__advanced_debian: []
+      when:
+        not packages__install_advanced | bool and ansible_os_family == 'Debian'
+
+    - name: Adding Archlinux Advances Packages to installation list
+      ansible.builtin.set_fact:
+        packages__advanced_archlinux: []
+      when:
+        not packages__install_advanced | bool and ansible_os_family == 'Archlinux'
+
+    - name: Not adding Debian Advances, CLI and Python Packages to installation list
+      ansible.builtin.set_fact:
+        packages__advanced_debian: []
+        packages__python: []
+        packages_cli_debian: []
+        packages__desktop_debian: []
+      when:
+        not ansible_os_family == 'Debian'
+
+    - name: Not adding Archlinux Advances Packages to installation list
+      ansible.builtin.set_fact:
+        packages__advanced_archlinux: []
+      when:
+        not ansible_os_family == 'Archlinux'
+
     - name: Adding Python Packages to installation list
       ansible.builtin.set_fact:
-        lpackages__python: []
+        packages__python: []
       when:
         not packages__install_python | bool
 
@@ -34,15 +61,27 @@
       when:
         not packages__install_cli | bool
 
+    - name: Adding Debian CLI Packages to installation list
+      ansible.builtin.set_fact:
+        packages__cli_debian: []
+      when:
+        not packages__install_cli | bool and ansible_os_family == 'Debian'
+
     - name: Adding Desktop Packages to installation list
       ansible.builtin.set_fact:
         packages__desktop: []
       when:
         not packages__install_desktop | bool
 
+    - name: Adding Debian Desktop Packages to installation list
+      ansible.builtin.set_fact:
+        packages__desktop_debian: []
+      when:
+        not packages__install_desktop | bool and ansible_os_family == 'Debian'
+
     - name: Combine Lists
       ansible.builtin.set_fact:
-        packages__install: "{{ packages__base + packages__advanced + packages__python + packages__cli + packages__desktop + packages__install_extra_packages }}"
+        packages__install: "{{ packages__base + packages__advanced + packages__advanced_archlinux + packages__advanced_debian + packages__python + packages__cli + packages_cli_debian + packages__desktop + packages__desktop_debian + packages__install_extra_packages }}"
 
     - name: Show packages__install on verbose run  # noqa: H500
       ansible.builtin.debug:

@@ -5,14 +5,14 @@
     update_cache: true
     cache_valid_time: 3600
   when:
-    - ansible_pkg_mgr == "apt"
+    - ansible_facts['pkg_mgr'] == "apt"
 
 - name: Update dnf repo-cache on RHEL/Fedora hosts
   become: true
   ansible.builtin.dnf:
     update_cache: true
   when:
-    - ansible_os_family == 'RedHat' and ansible_distribution_version | float >= 8
+    - ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution_version'] | float >= 8
 
 - name: Create Package installation list
   block:
@@ -26,13 +26,13 @@
       ansible.builtin.set_fact:
         packages__advanced_debian: []
       when:
-        not packages__install_advanced | bool and ansible_os_family == 'Debian'
+        not packages__install_advanced | bool and ansible_facts['os_family'] == 'Debian'
 
     - name: Adding Archlinux Advances Packages to installation list
       ansible.builtin.set_fact:
         packages__advanced_archlinux: []
       when:
-        not packages__install_advanced | bool and ansible_os_family == 'Archlinux'
+        not packages__install_advanced | bool and ansible_facts['os_family'] == 'Archlinux'
 
     - name: Not adding Debian Advances, CLI and Python Packages to installation list
       ansible.builtin.set_fact:
@@ -41,13 +41,13 @@
         packages__cli_debian: []
         packages__desktop_debian: []
       when:
-        not ansible_os_family == 'Debian'
+        not ansible_facts['os_family'] == 'Debian'
 
     - name: Not adding Archlinux Advances Packages to installation list
       ansible.builtin.set_fact:
         packages__advanced_archlinux: []
       when:
-        not ansible_os_family == 'Archlinux'
+        not ansible_facts['os_family'] == 'Archlinux'
 
     - name: Adding Python Packages to installation list
       ansible.builtin.set_fact:
@@ -65,7 +65,7 @@
       ansible.builtin.set_fact:
         packages__cli_debian: []
       when:
-        not packages__install_cli | bool and ansible_os_family == 'Debian'
+        not packages__install_cli | bool and ansible_facts['os_family'] == 'Debian'
 
     - name: Adding Desktop Packages to installation list
       ansible.builtin.set_fact:
@@ -77,7 +77,7 @@
       ansible.builtin.set_fact:
         packages__desktop_debian: []
       when:
-        not packages__install_desktop | bool and ansible_os_family == 'Debian'
+        not packages__install_desktop | bool and ansible_facts['os_family'] == 'Debian'
 
     - name: Combine Lists
       ansible.builtin.set_fact:

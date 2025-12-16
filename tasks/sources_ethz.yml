@@ -5,7 +5,7 @@
     update_cache: true
     cache_valid_time: 3600
   when:
-    - ansible_pkg_mgr == "apt"
+    - ansible_facts['pkg_mgr'] == "apt"
 
 - name: Install requirements to add packages via https
   become: true
@@ -36,7 +36,7 @@
   when:
     - packages__ethz_contrib | bool
     - packages__ethz_non_free | bool
-    - not ansible_distribution_major_version >= '12'
+    - not ansible_facts['distribution_major_version'] >= '12'
 
 - name: Set ETHZ debian packages to main contrib non-free non-free-firmware
   ansible.builtin.set_fact:
@@ -44,7 +44,7 @@
   when:
     - packages__ethz_contrib | bool
     - packages__ethz_non_free | bool
-    - ansible_distribution_major_version >= '12'
+    - ansible_facts['distribution_major_version'] >= '12'
 
 - name: Add ETH zurich apt for Debian
   become: true

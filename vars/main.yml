@@ -83,5 +83,5 @@ packages__desktop_debian:
   - nextcloud-desktop
   - fwupdate
 
-packages__playbook_version_number: 14
+packages__playbook_version_number: 15
 packages__playbook_version_path: 'l3d.base.packages.version'

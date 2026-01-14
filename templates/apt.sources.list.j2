@@ -4,27 +4,27 @@
 # https://wiki.debianforum.de/Sources.list
 
 # HTTPS mirror:
-deb https://debian.ethz.ch/debian {{ ansible_distribution_release }} {{ packages__debian_packages_version }}
-deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }} {{ packages__debian_packages_version }}
+deb https://debian.ethz.ch/debian {{ ansible_facts['distribution_release'] }} {{ packages__debian_packages_version }}
+deb-src https://debian.ethz.ch/debian {{ ansible_facts['distribution_release'] }} {{ packages__debian_packages_version }}
 
-{% if ansible_distribution_major_version >= '11' %}
-deb https://security.debian.ethz.ch/ {{ ansible_distribution_release }}-security {{ packages__debian_packages_version }}
-deb-src https://security.debian.ethz.ch/ {{ ansible_distribution_release }}-security {{ packages__debian_packages_version }}
+{% if ansible_facts['distribution_major_version'] >= '11' %}
+deb https://security.debian.ethz.ch/ {{ ansible_facts['distribution_release'] }}-security {{ packages__debian_packages_version }}
+deb-src https://security.debian.ethz.ch/ {{ ansible_facts['distribution_release'] }}-security {{ packages__debian_packages_version }}
 {% else %}
-deb https://security.debian.ethz.ch/ {{ ansible_distribution_release }}/updates {{ packages__debian_packages_version }}
-deb-src https://security.debian.ethz.ch/ {{ ansible_distribution_release }}/updates {{ packages__debian_packages_version }}
+deb https://security.debian.ethz.ch/ {{ ansible_facts['distribution_release'] }}/updates {{ packages__debian_packages_version }}
+deb-src https://security.debian.ethz.ch/ {{ ansible_facts['distribution_release'] }}/updates {{ packages__debian_packages_version }}
 {% endif %}
 
 {% if packages__ethz_updates %}
-# {{ ansible_distribution_release }}-updates, previously known as 'volatile'
-deb https://debian.ethz.ch/debian {{ ansible_distribution_release }}-updates {{ packages__debian_packages_version }}
-deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }}-updates {{ packages__debian_packages_version }}
+# {{ ansible_facts['distribution_release'] }}-updates, previously known as 'volatile'
+deb https://debian.ethz.ch/debian {{ ansible_facts['distribution_release'] }}-updates {{ packages__debian_packages_version }}
+deb-src https://debian.ethz.ch/debian {{ ansible_facts['distribution_release'] }}-updates {{ packages__debian_packages_version }}
 {% endif %}
 
 {% if packages__ethz__backports %}
-# {{ ansible_distribution_release }}-backports
-deb https://debian.ethz.ch/debian {{ ansible_distribution_release }}-backports {{ packages__debian_packages_version }}
-deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }}-backports {{ packages__debian_packages_version }}
+# {{ ansible_facts['distribution_release'] }}-backports
+deb https://debian.ethz.ch/debian {{ ansible_facts['distribution_release'] }}-backports {{ packages__debian_packages_version }}
+deb-src https://debian.ethz.ch/debian {{ ansible_facts['distribution_release'] }}-backports {{ packages__debian_packages_version }}
 {% endif %}
 
 # Contact for proplems with the mirror:

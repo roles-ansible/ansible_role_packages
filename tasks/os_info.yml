@@ -1,33 +1,33 @@
 ---
-- name: Print OS Infos  # noqa: H500
+- name: Print OS Infos
   ansible.builtin.debug:
     msg: |
-      ansible_os_family = '{{ ansible_os_family }}'
-      ansible_distribution = '{{ ansible_distribution }}'
-      ansible_distribution_version = '{{ ansible_distribution_version }}'
-      ansible_distribution_release = '{{ ansible_distribution_release }}'
-      ansible_machine = '{{ ansible_machine }}'
+      ansible_facts['os_family'] = "{{ ansible_facts['os_family'] }}"
+      ansible_facts['distribution'] = "{{ ansible_facts['distribution'] }}"
+      ansible_facts['distribution_version'] = "{{ ansible_facts['distribution_version'] }}"
+      ansible_facts['distribution_release'] = "{{ ansible_facts['distribution_release'] }}"
+      ansible_facts['machine'] = "{{ ansible_facts['machine'] }}"
 
-      inventory_hostname = '{{ inventory_hostname }}'
-      ansible_hostname = '{{ ansible_hostname }}'
-      ansible_fqdn = '{{ ansible_fqdn }}'
+      inventory_hostname = "{{ inventory_hostname }}"
+      ansible_facts['hostname = "{{ ansible_facts['hostname'] }}"
+      ansible_facts['fqdn = "{{ ansible_facts['fqdn'] }}"
     verbosity: 1
 
 - name: Print used variables  # noqa: H500
   ansible.builtin.debug:
     msg: |
-      packages__adding_ethz: '{{ packages__adding_ethz }}'
-      packages__ethz_contrib: '{{ packages__ethz_contrib }}'
-      packages__ethz_non_free: '{{ packages__ethz_non_free }}'
-      packages__ethz_non_free_firmware: '{{ packages__ethz_non_free_firmware }}'
-      packages__ethz_security: '{{ packages__ethz_security }}'
-      packages__ethz_updates: '{{ packages__ethz_updates }}'
-      packages__ethz__backports: '{{ packages__ethz__backports }}'
-      packages__package_state: '{{ packages__package_state }}'
-      packages__upgrade_all: '{{ packages__upgrade_all }}'
-      packages__install_advanced: '{{ packages__install_advanced }}'
-      packages__install_python: '{{ packages__install_python }}'
-      packages__install_cli: '{{ packages__install_cli }}'
-      packages__install_extra_packages: '{{ packages__install_extra_packages }}'
-      submodules_versioncheck: '{{ submodules_versioncheck }}'
+      packages__adding_ethz: "{{ packages__adding_ethz }}"
+      packages__ethz_contrib: "{{ packages__ethz_contrib }}"
+      packages__ethz_non_free: "{{ packages__ethz_non_free }}"
+      packages__ethz_non_free_firmware: "{{ packages__ethz_non_free_firmware }}"
+      packages__ethz_security: "{{ packages__ethz_security }}"
+      packages__ethz_updates: "{{ packages__ethz_updates }}"
+      packages__ethz__backports: "{{ packages__ethz__backports }}"
+      packages__package_state: "{{ packages__package_state }}"
+      packages__upgrade_all: "{{ packages__upgrade_all }}"
+      packages__install_advanced: "{{ packages__install_advanced }}"
+      packages__install_python: "{{ packages__install_python }}"
+      packages__install_cli: "{{ packages__install_cli }}"
+      packages__install_extra_packages: "{{ packages__install_extra_packages }}"
+      submodules_versioncheck: "{{ submodules_versioncheck }}"
     verbosity: 1

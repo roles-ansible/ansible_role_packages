@@ -21,7 +21,6 @@ packages__advanced:
   - tcpdump
   - sysstat
   - fio
-  - resolvconf
 
 packages__advanced_debian:
   - debian-goodies

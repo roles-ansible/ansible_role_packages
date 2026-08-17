@@ -14,7 +14,7 @@
   when:
     - packages__adding_ethz | bool
     - ansible_facts['architecture'] == 'x86_64'
-    - ansible_facts['distribution'] == 'Debian' and ansible_distribution_version | float >= 8
+    - ansible_facts['distribution'] == 'Debian' and ansible_facts['distribution_version'] | float >= 8
     - ansible_facts['pkg_mgr'] == "apt"
 
 - name: Install packages based on selection
